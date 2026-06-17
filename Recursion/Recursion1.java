@@ -107,6 +107,41 @@ public class Recursion1 {
         System.out.println("Disk " + n  + " moved from " + source + " to " + destination);
         TowerOfHanoi(n-1, helper, source, destination);
     }
+    public static void PrintReverse(String str,int len){
+       
+        if(len < 0){
+            return;
+        }
+        System.out.print(str.charAt(len));
+        PrintReverse(str, len-1);
+    }
+    public static boolean printPrime(int num){
+        for(int i=2;i <= num/2;i++){
+            if(num%i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static int first = -1;
+    public static int last = -1;
+    public static void findOccurance(String str,int idx,char element){
+        if(idx == str.length()){
+            System.out.println("first occurance of "+element+" is at index "+first);
+            System.out.println("last occurance of "+element+" is at index "+last);
+            return;
+        }
+
+
+        if(str.charAt(idx) == element){
+            if(first == -1){
+                first = idx;
+            }else{
+                last = idx;
+            }
+        }
+        findOccurance(str, idx+1, element);
+    }
 
     public static void main(String args[]) {
         Recursion1 recursion = new Recursion1();
@@ -115,7 +150,9 @@ public class Recursion1 {
         // System.out.println(recursion.factorial(5));
         // System.out.println(recursion.Pow(2,3 ));
         // recursion.PrintFib(0, 1, 5);
-        recursion.TowerOfHanoi(3, "Source","Helper", "Destination");
+        // recursion.TowerOfHanoi(3, "Source","Helper", "Destination");
+        // recursion.PrintReverse("amal", 4);
+        recursion.findOccurance("abcad", 0, 'a');
 
     }
 
