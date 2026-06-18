@@ -142,6 +142,49 @@ public class Recursion1 {
         }
         findOccurance(str, idx+1, element);
     }
+    public static boolean checkArray(int arr[],int idx){
+        if(idx == arr.length-1){
+            return true;
+        }
+        if(arr[idx] < arr[idx+1]){
+            return checkArray(arr, idx+1);
+        }
+        return false;
+    }
+    public static void moveTar(String str,int idx,int count,char tar,String newString){
+        if(idx == str.length()){
+            for(int i=0;i<count;i++){
+                newString+=tar;
+            }
+            System.out.println(newString);
+            return;
+        }
+
+        if(str.charAt(idx)==tar){
+            count++;
+            moveTar(str, idx+1, count, tar, newString);
+        }else{
+            newString+=str.charAt(idx);
+            moveTar(str, idx+1, count, tar, newString);
+        }
+        
+    }
+    public static boolean [] map = new boolean[26];
+    public static void removeDuplicates(String str,int idx,String newString){
+        if(idx == str.length()){
+            System.out.println(newString);
+            return;
+        }
+
+        char curr = str.charAt(idx);
+        if(map[curr-'a']){
+            removeDuplicates(str, idx+1, newString);
+        }else{
+            newString+=curr;
+            map[curr-'a'] = true;
+            removeDuplicates(str,idx+1, newString);
+        }
+    }
 
     public static void main(String args[]) {
         Recursion1 recursion = new Recursion1();
@@ -152,7 +195,12 @@ public class Recursion1 {
         // recursion.PrintFib(0, 1, 5);
         // recursion.TowerOfHanoi(3, "Source","Helper", "Destination");
         // recursion.PrintReverse("amal", 4);
-        recursion.findOccurance("abcad", 0, 'a');
+        // recursion.findOccurance("abcad", 0, 'a');
+        // int arr[]={1,2,3,4,4};
+        // System.out.println(recursion.checkArray(arr,0));
+        // recursion.moveTar("amalchandralal", 0, 0, 'a', "");
+
+        recursion.removeDuplicates("dslsdfjdfsdioefdfsdoffeoufeifjdsfhdsofjosdfsdhfoidjf", 0, "");
 
     }
 
