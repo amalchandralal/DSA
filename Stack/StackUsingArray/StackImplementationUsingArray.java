@@ -44,6 +44,20 @@ public class StackImplementationUsingArray {
         }
 
     }
+    static boolean isEmpty(){
+        if(top == -1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    static boolean isFull(){
+        if(top == size -1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public static void main(String arg[]){
         Scanner sc = new Scanner(System.in);
